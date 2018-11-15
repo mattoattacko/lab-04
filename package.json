@@ -4,7 +4,10 @@
   "description": "![CF](http://i.imgur.com/7v5ASc8.png) LAB: Buffers - Bitmap Transformer\r =======================================================================",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "test-watch": "jest --verbose --coverage --watchAll",
+    "lint": "eslint **/*.js"
   },
   "repository": {
     "type": "git",
