@@ -47,21 +47,21 @@ const transformBackground = (bmp) => {
   console.log('Transforming Bitmap Background', bmp);
 
   let changeImg = bmp.buffer;
-// Testing different idea
+  // Testing different idea
   for(let i = 0; i < changeImg.length ; i= i+2)  {
-      if (changeImg[i] >220 && changeImg[i+1] <170 && changeImg[i+2] >220){
-          changeImg[i] = 10;
-          changeImg[i+1] = 50;
-          changeImg[i+2] = 50;
-      };
+    if (changeImg[i] >220 && changeImg[i+1] <170 && changeImg[i+2] >220){
+      changeImg[i] = 10;
+      changeImg[i+1] = 50;
+      changeImg[i+2] = 50;
+    }
   }
-// This color combo makes the bmp look inverted
+  // This color combo makes the bmp look inverted
 
   fs.writeFile(bitmap.newFile, bmp.buffer, (err,out) =>{
-     if (err) {
-         throw err;
-     }
-      console.log(`Bitmap Transformed: ${bitmap.newFile}`);
+    if (err) {
+      throw err;
+    }
+    console.log(`Bitmap Transformed: ${bitmap.newFile}`);
   });
 };
 
@@ -81,7 +81,7 @@ const transformGreyscale = (bmp) => {
  */
 const transforms = {
   greyscale: transformGreyscale,
-  background: transformBackground
+  background: transformBackground,
 };
 
 // ------------------ GET TO WORK ------------------- //
