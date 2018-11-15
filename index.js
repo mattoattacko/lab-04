@@ -46,13 +46,13 @@ const transformBackground = (bmp) => {
   bitmap.newFile = bitmap.file.replace(/\.bmp/, `.${operation}.bmp`);
   console.log('Transforming Bitmap Background', bmp);
 
-  let changeImg = bmp.buffer;
+  let johnImgEdit = bmp.buffer;
   // Testing different idea
-  for(let i = 0; i < changeImg.length ; i= i+2)  {
-    if (changeImg[i] >220 && changeImg[i+1] <170 && changeImg[i+2] >220){
-      changeImg[i] = 10;
-      changeImg[i+1] = 50;
-      changeImg[i+2] = 50;
+  for(let i = 0; i < johnImgEdit.length ; i= i+2)  {
+    if (johnImgEdit[i] >220 && johnImgEdit[i+1] <170 && johnImgEdit[i+2] >220){
+      johnImgEdit[i] = 10;
+      johnImgEdit[i+1] = 50;
+      johnImgEdit[i+2] = 50;
     }
   }
   // This color combo makes the bmp look inverted
