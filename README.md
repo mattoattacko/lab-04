@@ -1,3 +1,5 @@
+[![Build Status](https://www.travis-ci.com/mattoattacko/lab-04.svg?branch=master)](https://www.travis-ci.com/mattoattacko/lab-04)
+
 ![CF](http://i.imgur.com/7v5ASc8.png) LAB: Buffers - Bitmap Transformer
 =======================================================================
 Command to change the bitmap
