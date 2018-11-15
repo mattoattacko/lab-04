@@ -18,6 +18,11 @@ function Bitmap(filePath) {
 Bitmap.prototype.parse = function(buffer) {
   this.type = buffer.toString('utf-8', 0, 2);
   //... and so on
+  this.width = buffer.readInt16LE(18);
+  this.height = buffer.readInt16LE(22);
+  this.size = buffer.readInt16LE(2);
+  this.bytePixel = buffer.readInt16LE(28);
+  this.buffer = Buffer.from(buffer, this.width, this.height);
 };
 
 /**
@@ -27,7 +32,7 @@ Bitmap.prototype.parse = function(buffer) {
 Bitmap.prototype.transform = function(operation) {
   // This is really assumptive and unsafe
   transforms[operation](this);
-  this.newFile = this.file.replace(/\.bmp/, `.${operation}.bmp`);
+  // this.newFile = this.file.replace(/\.bmp/, `.${operation}.bmp`);
 };
 
 /**
@@ -36,6 +41,30 @@ Bitmap.prototype.transform = function(operation) {
  * Pro Tip: Use "pass by reference" to alter the bitmap's buffer in place so you don't have to pass it around ...
  * @param bmp
  */
+const transformBackground = (bmp) => {
+// Test 
+  bitmap.newFile = bitmap.file.replace(/\.bmp/, `.${operation}.bmp`);
+  console.log('Transforming Bitmap Background', bmp);
+
+  let changeImg = bmp.buffer;
+// Testing different idea
+  for(let i = 0; i < changeImg.length ; i= i+2)  {
+      if (changeImg[i] >220 && changeImg[i+1] <170 && changeImg[i+2] >220){
+          changeImg[i] = 10;
+          changeImg[i+1] = 50;
+          changeImg[i+2] = 50;
+      };
+  }
+// This color combo makes the bmp look inverted
+
+  fs.writeFile(bitmap.newFile, bmp.buffer, (err,out) =>{
+     if (err) {
+         throw err;
+     }
+      console.log(`Bitmap Transformed: ${bitmap.newFile}`);
+  });
+};
+
 const transformGreyscale = (bmp) => {
 
   console.log('Transforming bitmap into greyscale', bmp);
@@ -51,7 +80,8 @@ const transformGreyscale = (bmp) => {
  * Each property represents a transformation that someone could enter on the command line and then a function that would be called on the bitmap to do this job
  */
 const transforms = {
-  greyscale: transformGreyscale
+  greyscale: transformGreyscale,
+  background: transformBackground
 };
 
 // ------------------ GET TO WORK ------------------- //
