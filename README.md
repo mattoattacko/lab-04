@@ -1,5 +1,8 @@
 ![CF](http://i.imgur.com/7v5ASc8.png) LAB: Buffers - Bitmap Transformer
 =======================================================================
+Command to change the bitmap
+
+node index.js assets/baldy.bmp background
 
 ## Submission Instructions
 * Follow the core submission instructions
