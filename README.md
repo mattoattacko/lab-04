@@ -23,4 +23,4 @@ node index.js assets/baldy.bmp background
 * Finally, we call the transformWithCallbacks() function which then reads our file process. 
 
 #### Time Spent
-By my self, it took me about 6 hours of working on it before I realized that I really needed help. I ended up getting help from JB and Hai. Total it took me about 11 hours to complete.
+* By my self, it took me about 6 hours of working on it before I realized that I really needed help. I ended up getting help from JB and Hai. Total it took me about 11 hours to complete.
